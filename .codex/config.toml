@@ -1,0 +1,38 @@
+# .codex/config.toml — Configuration projet OpenAI Codex
+# Cette config est appliquée à toute session lancée depuis ce repo.
+# Référence : https://developers.openai.com/codex/config-reference
+
+# Modèle par défaut. Surclassable en session avec /model.
+model = "gpt-5.5"
+
+# Politique d'approbation par défaut : Codex demande avant action sensible.
+# Valeurs : "untrusted" | "on-request" | "on-failure" | "never"
+approval_policy = "on-request"
+
+# Sandbox par défaut : Codex peut lire/écrire dans le workspace mais pas en dehors.
+# Valeurs : "read-only" | "workspace-write" | "danger-full-access"
+sandbox_mode = "workspace-write"
+
+# Active la recherche web (utile pour vérifier une doc à jour).
+web_search = true
+
+# Profils nommés — activables avec : codex --profile <name>
+[profiles.plan]
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+# Profil "Plan" : Codex ne modifie rien, il propose un plan structuré.
+
+[profiles.review]
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+
+[profiles.agent]
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+# Profil utilisé pour les tâches longues type TP6 (multi-agents).
+
+# MCP servers (Model Context Protocol) — extensions de tools.
+# Décommente et adapte si tu ajoutes un serveur MCP (ex. base de données, Linear, Jira).
+# [mcp_servers.sqlite]
+# command = "npx"
+# args = ["-y", "@modelcontextprotocol/server-sqlite", "apps/api/data/support.db"]
