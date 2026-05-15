@@ -14,22 +14,11 @@ approval_policy = "on-request"
 sandbox_mode = "workspace-write"
 
 # Active la recherche web (utile pour vérifier une doc à jour).
-web_search = true
+web_search = "live"
 
-# Profils nommés — activables avec : codex --profile <name>
-[profiles.plan]
-approval_policy = "on-request"
-sandbox_mode = "read-only"
-# Profil "Plan" : Codex ne modifie rien, il propose un plan structuré.
-
-[profiles.review]
-approval_policy = "on-request"
-sandbox_mode = "read-only"
-
-[profiles.agent]
-approval_policy = "on-request"
-sandbox_mode = "workspace-write"
-# Profil utilisé pour les tâches longues type TP6 (multi-agents).
+# Profils nommés (plan, review, agent) : à définir dans le config utilisateur
+# ~/.codex/config.toml — depuis Codex CLI v0.130+, les profils sont ignorés au
+# niveau projet.
 
 # MCP servers (Model Context Protocol) — extensions de tools.
 # Décommente et adapte si tu ajoutes un serveur MCP (ex. base de données, Linear, Jira).
